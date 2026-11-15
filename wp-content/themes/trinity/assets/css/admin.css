@@ -1,0 +1,17 @@
+/* Admin: Trinity fields. */
+.trinity-fields { display: grid; gap: 18px; padding-top: 6px; }
+.trinity-field > label { display: block; font-weight: 600; margin-bottom: 6px; }
+.trinity-field input[type=text], .trinity-field input[type=url], .trinity-field textarea, .trinity-field select { width: 100%; max-width: 640px; }
+.trinity-field .description { margin-top: 4px; }
+.trinity-media__preview { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.trinity-media__preview span { width: 72px; height: 72px; overflow: hidden; border-radius: 3px; background: #f0f0f1; cursor: move; position: relative; }
+.trinity-media[data-multiple="0"] .trinity-media__preview span { width: 140px; height: 100px; cursor: default; }
+.trinity-media__preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.trinity-media[data-multiple="1"] .trinity-media__preview span:hover::after { content: "×"; position: absolute; inset: 0; display: grid; place-items: center; background: rgba(0, 0, 0, .55); color: #fff; font-size: 22px; cursor: pointer; }
+.trinity-hotspots__stage { position: relative; max-width: 900px; cursor: crosshair; }
+.trinity-hotspots__stage img { width: 100%; display: block; border-radius: 3px; }
+.trinity-hotspots__dot { position: absolute; transform: translate(-50%, -50%); width: 26px; height: 26px; border-radius: 50%; background: #B0915A; color: #fff; font-weight: 700; display: grid; place-items: center; box-shadow: 0 0 0 4px rgba(255, 255, 255, .7); pointer-events: none; }
+.trinity-hotspots__list { display: grid; gap: 10px; margin-top: 12px; max-width: 900px; }
+.trinity-hotspots__row { display: grid; grid-template-columns: 24px 1fr 2fr auto; gap: 8px; align-items: start; }
+.trinity-status-row select { min-width: 360px; }
+#adminmenu .menu-icon-lead .wp-menu-name::after { content: ""; }

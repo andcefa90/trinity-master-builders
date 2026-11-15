@@ -1,0 +1,110 @@
+/* Base: reset, typography, layout primitives, accessibility. */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--ink); }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+body {
+	margin: 0;
+	background: var(--background);
+	color: var(--text);
+	font-family: var(--f-sans);
+	font-size: var(--t-body);
+	line-height: 1.6;
+	font-weight: 380;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: clip;
+	text-rendering: optimizeLegibility;
+}
+img, svg, video, canvas { display: block; max-width: 100%; }
+[hidden] { display: none !important; }
+img { height: auto; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+button { font: inherit; color: inherit; cursor: pointer; }
+input, textarea, select { font: inherit; color: inherit; }
+h1, h2, h3, h4 { margin: 0; font-weight: 400; }
+p, ol, ul, figure, blockquote, dl, dd { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+::selection { background: var(--gold); color: var(--ivory); }
+
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 2px; }
+
+.wrap {
+	width: 100%;
+	max-width: var(--max);
+	margin-inline: auto;
+	padding-left: var(--gutter-l);
+	padding-right: var(--gutter-r);
+}
+
+/* Display type: serif, mixed case, with the italic as the brand's second voice. */
+.display,
+.hero__title, .worlds__title, .transform__title, .craft__title, .water-teaser__title,
+.proof__title, .builder__title, .finale__title, .section-title, .world-hero__title,
+.page-hero__title, .project-hero__title, .about-hero__title, .page-plain__title,
+.journey__title, .night__title, .project-cta__title {
+	font-family: var(--f-serif);
+	font-weight: 300;
+	letter-spacing: -.025em;
+	line-height: .95;
+	text-wrap: balance;
+	font-optical-sizing: auto;
+}
+h1 em, h2 em, h3 em, .display em { font-style: italic; color: var(--gold); }
+[data-tone="dark"] h1 em, [data-tone="dark"] h2 em { color: var(--gold-hi); }
+
+.section-title { font-size: var(--t-l); }
+
+.eyebrow {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px 14px;
+	font-family: var(--f-mono);
+	font-size: var(--t-micro);
+	font-weight: 500;
+	letter-spacing: .18em;
+	text-transform: uppercase;
+	color: var(--gold-lo);
+}
+[data-tone="dark"] .eyebrow { color: var(--gold-hi); }
+.eyebrow a { text-decoration: none; }
+
+.lede { font-size: var(--t-s); max-width: 44ch; }
+
+.prose { max-width: 68ch; font-size: 1.1rem; line-height: 1.7; }
+.prose > * + * { margin-top: 1.1em; }
+.prose h2, .prose h3 { font-family: var(--f-serif); font-weight: 400; line-height: 1.15; margin-top: 1.8em; }
+.prose h2 { font-size: var(--t-m); }
+.prose img { border-radius: 2px; }
+.prose a { color: var(--gold-lo); }
+.prose ul { list-style: disc; padding-left: 1.2em; }
+
+[data-tone="dark"] { background: var(--ink); color: var(--ivory); }
+
+.skip-link {
+	position: fixed; left: 16px; top: -100px; z-index: 1000;
+	background: var(--ivory); color: var(--ink); padding: 12px 18px; border-radius: 4px;
+}
+.skip-link:focus { top: calc(16px + env(safe-area-inset-top, 0px)); }
+.screen-reader-text {
+	position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+	overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* Masked text reveals (set up by JS; text stays visible without it). */
+.split-line { display: inline-block; overflow: clip; vertical-align: top; padding-bottom: .08em; margin-bottom: -.08em; }
+.split-line > span { display: inline-block; will-change: transform; }
+
+/* Page curtain on arrival (set before first paint by an inline script; failsafe hides it if JS never runs). */
+.curtain-in .curtain { visibility: visible; animation: curtainFailsafe 0s 2.5s forwards; }
+.curtain-in .curtain__panel { transform: none; }
+html[data-curtain="landscape"] .curtain { --curtain: #2A2B20; }
+html[data-curtain="home-improvements"] .curtain { --curtain: #2B2119; }
+html[data-curtain="water"] .curtain { --curtain: var(--deep); }
+@keyframes curtainFailsafe { to { visibility: hidden; } }
+
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

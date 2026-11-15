@@ -1,0 +1,73 @@
+/*
+ * Trinity design tokens.
+ * Colors are taken from the supplied Trinity logo (gold, brown, ivory) and the
+ * existing Cali Scaping identity (stone #E6E3DC, olive #78785A, clay #BE8C7D).
+ * Layout: editorial full-bleed bands that alternate warm ivory paper and charcoal night,
+ * each world adding one accent of its own.
+ */
+:root {
+	/* Brand palette */
+	--ivory: #F3ECDF;
+	--stone: #E6E3DC;
+	--paper: #EAE1CF;
+	--ink: #1D1915;
+	--ink-2: #27211B;
+	--ink-3: #342C24;
+	--brown: #4B3423;
+	--gold: #B0915A;
+	--gold-hi: #DCC79F;
+	--gold-lo: #7A5E34;
+	--olive: #78785A;
+	--clay: #BE8C7D;
+	--aqua: #86AEA9;
+	--deep: #0E1817;
+
+	/* Semantic roles */
+	--primary: var(--ink);
+	--secondary: var(--brown);
+	--accent: var(--gold);
+	--background: var(--ivory);
+	--text: var(--ink);
+	--muted: #75685A;
+	--muted-dark: #A99C8B;
+	--border: rgba(29, 25, 21, .14);
+	--border-dark: rgba(243, 236, 223, .14);
+
+	/* World accents (overridable per business line from the CMS via --accent) */
+	--world-landscape: var(--olive);
+	--world-home: #9A7A55;
+	--world-water: var(--aqua);
+
+	/* Type */
+	--f-serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+	--f-sans: "Archivo", "Helvetica Neue", Arial, sans-serif;
+	--f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+	--t-hero: clamp(3.6rem, 11.2vw, 13rem);
+	--t-xl: clamp(2.7rem, 6.6vw, 7.4rem);
+	--t-l: clamp(2.1rem, 4.4vw, 4.8rem);
+	--t-m: clamp(1.45rem, 2.3vw, 2.2rem);
+	--t-s: clamp(1.08rem, 1.3vw, 1.25rem);
+	--t-body: 1.0625rem;
+	--t-small: .9rem;
+	--t-micro: .7rem;
+
+	/* Space & layout */
+	--gutter-l: max(clamp(20px, 5vw, 80px), env(safe-area-inset-left, 0px));
+	--gutter-r: max(clamp(20px, 5vw, 80px), env(safe-area-inset-right, 0px));
+	--max: 1520px;
+	--section: clamp(96px, 14vh, 180px);
+	--header-h: 76px;
+
+	/* Motion */
+	--ease: cubic-bezier(.2, .7, .1, 1);
+	--ease-in-out: cubic-bezier(.76, 0, .24, 1);
+	--dur: .7s;
+
+	color-scheme: light;
+}
+
+/* World context: body classes set by the theme on world and project pages. */
+.world--landscape { --accent: var(--world-landscape); }
+.world--home-improvements { --accent: var(--world-home); }
+.world--water { --accent: var(--world-water); }
